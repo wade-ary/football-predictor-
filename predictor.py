@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score
 
-matches = pd.read_csv("matches15.csv")
+matches = pd.read_csv("matchesDATA.csv")
 
 def rolling_averages(group, cols, new_cols):
     rolling_stats = group[cols].rolling(3, closed='left').mean()
@@ -35,6 +35,5 @@ combined = pd.DataFrame(dict(actual=test_rolling["Result Value"], prediction=pre
 
 combined = combined.merge(test_rolling[["Home Team", "Away Team", "Result"]], left_index=True, right_index=True)
 
-# Output the precision
 print(f"Precision: {precision}")
 
